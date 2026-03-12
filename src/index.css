@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(77, 226, 209, 0.18), transparent 24%),
+    radial-gradient(circle at left center, rgba(74, 156, 255, 0.14), transparent 30%),
+    linear-gradient(160deg, #050816 0%, #0b1020 45%, #121a31 100%);
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: #07101f;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.station-pin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.station-pin__dot {
+  height: 14px;
+  width: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+
+.station-pin__label {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 16, 31, 0.88);
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #dfe7f7;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.station-pin--selected .station-pin__dot {
+  box-shadow:
+    0 0 0 8px rgba(77, 226, 209, 0.12),
+    0 0 22px rgba(77, 226, 209, 0.55);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-tooltip {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 16, 31, 0.94);
+  color: #dfe7f7;
+  box-shadow: 0 20px 50px rgba(4, 9, 23, 0.45);
+}
+
+.leaflet-popup-tip,
+.leaflet-tooltip-top:before {
+  background: rgba(7, 16, 31, 0.94);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-3xl border border-white/10 bg-white/[0.06] shadow-panel backdrop-blur-xl;
+  }
+
+  .panel-soft {
+    @apply rounded-2xl border border-white/[0.08] bg-slate-900/[0.55] backdrop-blur-md;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.32em] text-slate-400;
+  }
+
+  .metric-value {
+    @apply text-3xl font-semibold tracking-tight text-white;
+  }
+}
