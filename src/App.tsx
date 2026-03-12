@@ -34,30 +34,34 @@ const App = () => {
   useRealtimeSimulation();
 
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen p-4 lg:p-6">
-          <div className="mx-auto max-w-[1720px]">
-            <PanelCard className="flex min-h-[220px] items-center justify-center text-slate-300">
-              Loading operational view...
-            </PanelCard>
-          </div>
-        </div>
-      }
-    >
-      <Routes>
-        <Route element={<DashboardLayout />}>
-          <Route index element={<OverviewPage />} />
-          <Route path="/map" element={<MapViewPage />} />
-          <Route path="/stations/:stationId" element={<StationDetailsPage />} />
-          <Route path="/stations" element={<Navigate to="/" replace />} />
-          <Route path="/analytics" element={<SalesAnalyticsPage />} />
-          <Route path="/inventory" element={<InventoryMonitoringPage />} />
-          <Route path="/optimization" element={<DistributionOptimizationPage />} />
-          <Route path="/alerts" element={<AlertsPage />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <div className="app-zoom-shell">
+      <div className="app-zoom-stage">
+        <Suspense
+          fallback={
+            <div className="min-h-screen p-4 lg:p-6">
+              <div className="mx-auto max-w-[1720px]">
+                <PanelCard className="flex min-h-[220px] items-center justify-center text-slate-300">
+                  Loading operational view...
+                </PanelCard>
+              </div>
+            </div>
+          }
+        >
+          <Routes>
+            <Route element={<DashboardLayout />}>
+              <Route index element={<OverviewPage />} />
+              <Route path="/map" element={<MapViewPage />} />
+              <Route path="/stations/:stationId" element={<StationDetailsPage />} />
+              <Route path="/stations" element={<Navigate to="/" replace />} />
+              <Route path="/analytics" element={<SalesAnalyticsPage />} />
+              <Route path="/inventory" element={<InventoryMonitoringPage />} />
+              <Route path="/optimization" element={<DistributionOptimizationPage />} />
+              <Route path="/alerts" element={<AlertsPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </div>
+    </div>
   );
 };
 

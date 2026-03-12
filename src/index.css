@@ -4,6 +4,7 @@
 
 :root {
   color-scheme: dark;
+  --app-zoom-scale: 0.7;
 }
 
 body {
@@ -17,6 +18,19 @@ body {
 
 #root {
   min-height: 100vh;
+}
+
+.app-zoom-shell {
+  min-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.app-zoom-stage {
+  min-height: calc(100vh / var(--app-zoom-scale));
+  width: calc(100% / var(--app-zoom-scale));
+  transform: scale(var(--app-zoom-scale));
+  transform-origin: top left;
 }
 
 .leaflet-container {
